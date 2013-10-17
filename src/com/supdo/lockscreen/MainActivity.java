@@ -18,7 +18,6 @@ public class MainActivity extends Activity {
 		if (devicePolicyManager.isAdminActive(SDDar.getCn(this))) {
 			devicePolicyManager.lockNow();
 			finish();
-			android.os.Process.killProcess(android.os.Process.myPid()); 
 		} else {
 			startAddDeviceAdminAty();
 		}
@@ -41,7 +40,6 @@ public class MainActivity extends Activity {
 		} else {
 			startAddDeviceAdminAty();
 		}
-		android.os.Process.killProcess(android.os.Process.myPid()); 
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
@@ -49,6 +47,13 @@ public class MainActivity extends Activity {
 	protected void onPause() {
 		finish();
 		super.onPause();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		//android.os.Process.killProcess(android.os.Process.myPid()); 
+		//System.exit(0);
 	}
 
 	@Override
